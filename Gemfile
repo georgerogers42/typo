@@ -1,34 +1,8 @@
-env = ENV["RAILS_ENV"] || 'development'
-dbfile = File.expand_path("../config/database.yml", __FILE__)
-
-unless File.exists?(dbfile)
-  puts "You need to configure config/database.yml first"
-  puts "Exiting"
-  exit
-else
-  conf = YAML.load(File.read(dbfile))
-  adapter = conf[env]['adapter']
-  raise "You need define an adapter in your database.yml" if adapter == '' || adapter.nil?
-  case adapter
-  when 'sqlite3'
-    gem 'sqlite3'
-  when 'postgresql'
-    gem 'pg'
-  when 'mysql'
-    if RUBY_VERSION.include?('1.9')
-      gem 'sam-mysql-ruby'
-    else
-      gem 'mysql'
-    end
-  else
-    raise "Don't know what gem to use for adapter #{adapter}"
-  end
-end
-
 require 'fileutils'
 require 'yaml'
 
 source :gemcutter
+gem 'mysql2'
 gem 'rails', '3.0.10'
 gem 'require_relative'
 gem 'htmlentities'
