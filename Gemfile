@@ -1,6 +1,5 @@
-require 'fileutils'
-require 'yaml'
 
+source :rubygems
 source :gemcutter
 gem 'mysql'
 gem 'rails', '3.0.10'
