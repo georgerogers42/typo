@@ -3,6 +3,7 @@ require 'yaml'
 
 source :gemcutter
 gem 'mysql2'
+gem 'activerecord-mysql2-adapter'
 gem 'rails', '3.0.10'
 gem 'require_relative'
 gem 'htmlentities'
